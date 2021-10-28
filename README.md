@@ -2,6 +2,8 @@
 
 BECDIG is used to analyze the first-hop found in .eml files. IP information scraped from Scamalytics is then outputted for the user listing known address functionalities such as VPN/S, proxy, and TOR association.
 
+Note: Scraped data from Scamalytics is currently 90-95% accurate. Sometimes, the software likes to pull proxy and other IP data instead of the proper associations. For these addresses, a manual lookup is required. (https://scamalytics.com/ip)
+
 # Requirements and Installation Procedures:
 1. Extract BECDIG.zip contents.
 2. Install eml analyzer on your system (pip install eml-analyzer)
@@ -9,3 +11,7 @@ BECDIG is used to analyze the first-hop found in .eml files. IP information scra
 4. Dump all .eml files into the eml_files directory
 5. Run becdig.py inside the BECDIG directory
 6. Best of luck with your forensic investigation!
+
+# Future Updates
+1. Additional .EML data
+2. Increased accuracy for scraped scamalytics data
