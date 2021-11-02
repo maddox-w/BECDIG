@@ -32,7 +32,7 @@ def grab_scamalytics_data():
 		y = y + 1
 		
 	# Scrape data
-	print("Scraping Scamalytics data...for free!")
+	print("Grabbing Scamalytics data...for free!")
 	x = 0
 	with alive_bar(len(ip_list)) as bar:
 		for ip in ip_list:
