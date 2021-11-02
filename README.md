@@ -19,5 +19,7 @@ This listed files on this repo represent the Windows version of BECDIG and are o
 1. Additional .EML data
 2. Increased accuracy for scraped scamalytics data
 
-#Harness the POWER of the Windows Command Prompt to move thousands of .EMLs from one location to another!
+# Harness the POWER of the Windows Command Prompt to move thousands of .EMLs from one location to another!
+```
 for /r "[EML LOCATION]" %x in (*.eml) do move /y "%x" "[X]\BECDIG\eml_files"
+```
