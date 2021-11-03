@@ -13,6 +13,9 @@ import ipaddress
 # Required for tracking eml parsing
 from alive_progress import alive_bar
 
+#Tracks .eml files unable to be loaded with eml-analyzer
+unloaded_files = []
+
 def grab_email_ips():
 	#Grab from eml_files directory
 	print("Grabbing eml files...")
@@ -35,12 +38,20 @@ def grab_email_ips():
 			saved_file_name = eml_files[x].replace(" ", "")
 			#print(f"python3 cli_script.py --header -i \"{cwd}\\eml_files\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"")
 			#run([f"python3 cli_script.py --header -i \"{cwd}\\eml_files\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\""], shell=True)
-			subprocess.run(f'python eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"',capture_output=False, shell=True)
+			try:
+				subprocess.run(f'python eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"',stderr=subprocess.DEVNULL, shell=True)
 			#os.system(f"python eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"")
+			except:
+				unloaded_files.append(saved_file_name)
 			bar()
 			x = x + 1
 		print("Done!")
-
+		print("Writing unsuccessful .eml loads...")
+		error_file = open("errors.txt", "w")
+		for error in unloaded_files:
+			error_file.write(error + "\n")
+			error_file.close()
+		print("Done!")
 	#Read parsed files into a list
 
 	parsed_eml_files = []
