@@ -3,7 +3,7 @@ import re
 # Required for grabbing eml file names
 import os
 # Required for running the eml analyzer subprocess
-from subprocess import run
+import subprocess
 # Required for retrieving scamalytics data
 import becscan
 # Required for writing retrieved IPs to xlsx
@@ -35,7 +35,8 @@ def grab_email_ips():
 			saved_file_name = eml_files[x].replace(" ", "")
 			#print(f"python3 cli_script.py --header -i \"{cwd}\\eml_files\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"")
 			#run([f"python3 cli_script.py --header -i \"{cwd}\\eml_files\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\""], shell=True)
-			os.system(f"python3 eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"")
+			subprocess.run(f'python eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"',capture_output=False, shell=True)
+			#os.system(f"python eml_analyzer.py --header -i \"{cwd}\\{path}\\{eml_files[x]}\" > \"{cwd}\\parsed_eml\\{saved_file_name}_headers.txt\"")
 			bar()
 			x = x + 1
 		print("Done!")
