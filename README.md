@@ -2,10 +2,6 @@
 
 BECDIG is used to analyze the first-hop found in .eml files. IP information scraped from Scamalytics is then outputted for the user listing known address functionalities such as VPN/S, proxy, and TOR association.
 
-
-Note: 
-Scraped data from Scamalytics is currently 90-95% accurate. Sometimes, the software likes to pull proxy and other IP data instead of the proper associations. For these addresses, a manual lookup is required (https://scamalytics.com/ip). Also, eml-analyzer currently has an unknown key error when parsing .eml header data, not all files will be captured and this process is currently 98% accurate.
-
 ## Requirements and Installation Procedures:
 
 This listed files on this repo represent the Windows version of BECDIG and are only posted for display purposes. Please ensure to only utilize the .zip contents of either the BECDIG-WINDOWS or BECDIG-LINUX files for the smoothest experience.
